@@ -1,0 +1,23 @@
+- name: Run command
+  hosts: {{ p_hosts}}
+  tasks:
+ 
+  - name: Execute script on RedHat servers
+    ansible.builtin.command: "{{ p_command }}"
+    register: command_output
+    when: ansible_os_family == "RedHat"
+
+  - name: debug redhat command_output
+    debug:
+      var: command_output.stdout_lines
+    when: ansible_os_family == "RedHat"
+
+  - name: Execute script on windows servers
+    ansible.windows.win_command: "{{ p_command }}"
+    register: command_output
+    when: ansible_os_family == "Windows"
+
+  - name: debug windows command_output
+    debug:
+      var: command_output.stdout_lines
+    when: ansible_os_family == "Windows"
