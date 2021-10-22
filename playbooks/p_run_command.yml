@@ -11,7 +11,7 @@
 
   - name: debug redhat command_output
     debug:
-      var: command_output.stdout_lines
+      var: command_output
     when: ansible_os_family == "RedHat"
 
   - name: Execute script on windows servers
@@ -21,5 +21,5 @@
 
   - name: debug windows command_output
     debug:
-      var: command_output.stdout_lines
+      var: command_output
     when: ansible_os_family == "Windows"

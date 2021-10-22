@@ -4,22 +4,22 @@
   hosts: "{{ p_hosts}}"
   tasks:
  
-  - name: Ping Linux server
+  - name: Ping linux server
     ansible.builtin.ping:
     register: ping_output
     when: ansible_os_family == "RedHat"
 
-  - name: debug ping_output
+  - name: debug linux ping_output
     debug:
-      var: ping_output.stdout_lines
+      var: ping_output
     when: ansible_os_family == "RedHat"
 
-  - name: Ping Windows server
+  - name: Ping windows server
     ansible.windows.win_ping:
     register: ping_output
     when: ansible_os_family == "Windows"
 
-  - name: debug ping_output
+  - name: debug windows ping_output
     debug:
-      var: ping_output.stdout_lines
+      var: ping_output
     when: ansible_os_family == "Windows"
