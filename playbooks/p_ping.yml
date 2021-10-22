@@ -1,5 +1,7 @@
+---
+
 - name: Run command
-  hosts: {{ p_hosts}}
+  hosts: "{{ p_hosts}}"
   tasks:
  
   - name: Ping Linux server
