@@ -1,0 +1,23 @@
+- name: Run command
+  hosts: {{ p_hosts}}
+  tasks:
+ 
+  - name: Ping Linux server
+    ansible.builtin.ping:
+    register: ping_output
+    when: ansible_os_family == "RedHat"
+
+  - name: debug ping_output
+    debug:
+      var: ping_output.stdout_lines
+    when: ansible_os_family == "RedHat"
+
+  - name: Ping Windows server
+    ansible.windows.win_ping:
+    register: ping_output
+    when: ansible_os_family == "Windows"
+
+  - name: debug ping_output
+    debug:
+      var: ping_output.stdout_lines
+    when: ansible_os_family == "Windows"
