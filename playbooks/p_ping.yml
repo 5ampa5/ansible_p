@@ -2,6 +2,8 @@
 
 - name: Run command
   hosts: "{{ p_hosts}}"
+  remote_user: "{{ p_remote_user | default('saAWXAUTp01') }}"
+  become: yes
   tasks:
  
   - name: Ping linux server
