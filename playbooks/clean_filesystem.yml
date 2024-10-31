@@ -1,0 +1,7 @@
+- name: Clean filesystem
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Clean filesystem
+      ansible.builtin.debug:
+        msg: "Filesystem is clean!"
